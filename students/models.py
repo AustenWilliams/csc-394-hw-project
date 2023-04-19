@@ -7,3 +7,11 @@ class Student(models.Model):
     
     def __str__(self) -> str:
     	return self.first_name + " " + self.last_name
+
+class Course(models.Model):
+    department = models.CharField(max_length=60)
+    number = models.CharField(max_length=3)
+    students = models.ManyToManyField(Student)
+    
+    def __str__(self) -> str:
+        return self.department + "-" + self.number
